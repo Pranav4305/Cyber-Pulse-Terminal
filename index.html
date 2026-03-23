@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cyber Pulse Terminal</title>
+    <meta
+      name="description"
+      content="Cyber Pulse Terminal: live cybersecurity headlines from trusted sources."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <div class="scanline"></div>
+
+    <main class="shell">
+      <header class="shell-header">
+        <p class="prompt">root@cyberpulse:~$ <span>news --watch --sources all</span></p>
+        <h1>Cyber Pulse Terminal</h1>
+        <p class="subtext">Live cybersecurity headlines in one place</p>
+      </header>
+
+      <section class="ticker-wrap" aria-label="Top headlines ticker">
+        <p class="ticker-label">Top 10 Today</p>
+        <div class="ticker-track">
+          <p id="tickerText" class="ticker-text">Waiting for headlines...</p>
+        </div>
+      </section>
+
+      <section class="toolbar">
+        <button id="refreshButton" type="button">Refresh Feed</button>
+        <button id="exportBookmarksButton" type="button">Export Bookmarks</button>
+        <input id="searchInput" type="search" placeholder="Search headlines..." aria-label="Search headlines" />
+        <select id="sourceFilter" aria-label="Filter by source">
+          <option value="all">All Sources</option>
+        </select>
+        <label class="bookmark-toggle">
+          <input id="bookmarksOnly" type="checkbox" />
+          Bookmarks only
+        </label>
+      </section>
+
+      <section class="status-row">
+        <p id="statusText">Initializing secure channel...</p>
+      </section>
+
+      <section>
+        <ul id="newsList" class="news-list" aria-live="polite"></ul>
+        <div class="list-footer">
+          <button id="loadMoreButton" type="button">Load More</button>
+        </div>
+      </section>
+    </main>
+
+    <template id="newsItemTemplate">
+      <li class="news-item">
+        <div class="item-top">
+          <span class="source"></span>
+          <div class="meta-right">
+            <span class="severity"></span>
+            <span class="date"></span>
+          </div>
+        </div>
+        <a class="title" target="_blank" rel="noopener noreferrer"></a>
+        <p class="summary"></p>
+        <div class="item-actions">
+          <button class="bookmark-button" type="button">Bookmark</button>
+        </div>
+      </li>
+    </template>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>
